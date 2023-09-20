@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eRegistrar - Edit Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 36px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        form input[type="text"],
+        form input[type="date"],
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        form label {
+            display: block;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        form button[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /* Add more styles as needed for other elements */
+    </style>
+</head>
+<body>
+<h1>Edit Student</h1>
+<form th:action="@{/students/edit/{id}(id=${student.studentId})}" th:object="${student}" method="post">
+    <!-- Input fields for student data -->
+    <label for="studentNumber">Student Number:</label>
+    <input type="text" th:field="*{studentNumber}" placeholder="Student Number" required/>
+
+    <label for="firstName">First Name:</label>
+    <input type="text" th:field="*{firstName}" placeholder="First Name" required/>
+
+    <label for="middleName">Middle Name:</label>
+    <input type="text" th:field="*{middleName}" placeholder="Middle Name" required/>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" th:field="*{lastName}" placeholder="Last Name" required/>
+
+    <label for="cgpa">CGPA:</label>
+    <input type="text" th:field="*{cgpa}" placeholder="CGPA" required/>
+
+    <label for="enrollmentDate">Enrollment Date:</label>
+    <input type="date" th:field="*{enrollmentDate}" required/>
+
+    <label for="isInternational">International Student:</label>
+    <select th:field="*{isInternational}" required>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select>
+
+    <!-- Add more input fields as needed -->
+
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
